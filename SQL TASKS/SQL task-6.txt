@@ -1,0 +1,57 @@
+TASK - 6
+========
+
+Task-6.1
+========
+
+Requirement: Show all employees names   (Reading one column value)
+
+ select name from employees
+
+Requirement: Show all employees mailid	(Reading one column value)
+
+ select mailid from employees
+
+Requirement: Show all employees userid and pswd (Reading more than one column values)
+
+ select userid,pswd from employees
+
+Requirement: Show all employees userid,salary and dept(Reading more than one column values)
+
+ select userid,salary,dept from employees
+
+Requirement: Show all employee details
+
+ select * from employees
+============================================================================================
+
+Task 6.2
+========
+
+Requirement1: Show highest salary in employees table
+
+ select max(salary) from employees
+
+Requirement2: Show lowest salary in employees table
+
+ select min(salary) from employees
+
+Requirement3: Show sum of all salares in employees table
+ 
+ select sum(salary) from employees
+
+Requirement4: Show average of all salares in employees table
+
+ select avg(salary) from employees
+
+Requirement5: Show number of rows in employees table
+
+ select count(*) from employees
+
+Requirement6: Show oldest employee age in employees table
+
+ select max(age) from employees
+
+Requirement7: Show younger employee age in employees table
+
+ select min(age) from employees

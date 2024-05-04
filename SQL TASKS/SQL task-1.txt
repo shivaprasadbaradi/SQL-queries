@@ -1,0 +1,138 @@
+TABLE - 1
+=========
+ CREATE TABLE employees
+       (
+          id      NUMBER PRIMARY KEY,
+          name    CHAR(20) NOT NULL,
+          age     NUMBER NOT NULL CHECK(age>18 AND age<60),
+          address CHAR(20) NOT NULL,
+          salary  NUMBER NOT NULL CHECK(salary>0 AND salary<20000)
+       );
+ =============================================================
+ 
+insert into employee (id,name,age,address,salary) values(1,'Ramesh',32,'Ahmedabad',2000.00);
+insert into employee (id,name,age,address,salary) values(2,'Khilan',25,'Delhi',1500.00);
+insert into employee (id,name,age,address,salary) values(3,'Kaushik',23,'Kota',2000.00);
+insert into employee (id,name,age,address,salary) values(4,'Chaitali',25,'Mumbai',6500.00);
+insert into employee (id,name,age,address,salary) values(5,'Hardik',27,'Bhopal',8500.00);
+insert into employee (id,name,age,address,salary) values(6,'Komal',22,'MP',4500.00);
+insert into employee (id,name,age,address,salary) values(7,'Muffy',24,'Indore',10000.00);
+
+
+TABLE - 2
+=========
+
+CREATE TABLE persons
+  (
+     personid  NUMBER PRIMARY KEY,
+     lastname  CHAR(10) NOT NULL,
+     firstname CHAR(10) NOT NULL,
+     age       NUMBER NOT NULL CHECK(age>0)
+  ); 
+=================================================
+
+insert into persons(personid,lastname,firstname,age) values(1,'Hansen','Ola',30);
+insert into persons(personid,lastname,firstname,age) values(2,'Svendson','Tove',23);
+insert into persons(personid,lastname,firstname,age) values(3,'Pettersen','kari',20);
+====================================================================================
+
+TABLE - 3
+=========
+
+CREATE TABLE orders
+  (
+     orderid     NUMBER PRIMARY KEY,
+     ordernumber NUMBER NOT NULL UNIQUE,
+     personid    NUMBER REFERENCES persons(personid)
+  ); 
+======================================================
+
+
+insert into orders(orderid,ordernumber,personid) values(1,77895,3);
+insert into orders(orderid,ordernumber,personid) values(2,44678,3);
+insert into orders(orderid,ordernumber,personid) values(3,22456,2);
+insert into orders(orderid,ordernumber,personid) values(4,24562,1);
+=====================================================================================
+
+TABLE - 4
+=========
+CREATE TABLE courses
+  (
+     courseid   VARCHAR(10) PRIMARY KEY,
+     coursename CHAR(10) NOT NULL UNIQUE
+  ); 
+==========================================
+
+insert into courses(courseid,coursename) values('A004','Accounts');
+insert into courses(courseid,coursename) values('C002','Computing');
+insert into courses(courseid,coursename) values('P301','History');
+insert into courses(courseid,coursename) values('S042','course');
+==========================================================================================
+
+TABLE - 5
+=========
+
+CREATE TABLE students
+  (
+     studentid VARCHAR(10) PRIMARY KEY,
+     firstname CHAR(10) NOT NULL,
+     lastname  CHAR(10) NOT NULL,
+     courseid  VARCHAR(5) REFERENCES courses(courseid)
+  ); 
+=======================================================
+
+insert into students(studentid,firstname,lastname,courseid) values('L0002345','Jim','Black','C002');
+insert into students(studentid,firstname,lastname,courseid) values('L0001254','James','Harradine','A004');
+insert into students(studentid,firstname,lastname,courseid) values('L0002349','Amanda','Holland','C002');
+insert into students(studentid,firstname,lastname,courseid) values('L0001198','Simon','McCloud','S042');
+===========================================================================================================
+
+TABLE - 6
+==========
+
+CREATE TABLE customers
+  (
+     customerid NUMBER PRIMARY KEY,
+     firstname  CHAR(10) NOT NULL,
+     lastname   CHAR(10) NOT NULL
+  );
+=======================================
+
+insert into customers(customerid,firstname,lastname) values(5,'James','bladwin');
+insert into customers(customerid,firstname,lastname) values(236,'Olivia','Pantonelli');
+insert into customers(customerid,firstname,lastname) values(721,'Xi','Fang');
+============================================================================================
+
+TABLE - 7
+==========
+
+CREATE TABLE products
+  (
+     productid NUMBER(20) PRIMARY KEY,
+     name      CHAR(20) NOT NULL,
+     price     FLOAT NOT NULL CHECK(price>0 AND price<10000.0)
+  ); 
+===================================================================
+
+insert into products(productid,name,price) values(2354,'LF Keyboard',99.87);
+insert into products(productid,name,price) values(894485,'WanderMaus',46.79);
+insert into products(productid,name,price) values(425985,'Magic Lamp',77.33);
+insert into products(productid,name,price) values(33786,'Superstapier',12.99);
+insert into products(productid,name,price) values(779642,'USB-C Dongole',400.99);
+=================================================================================================
+
+TABLE - 8
+==========
+
+CREATE TABLE orders1
+  (
+     orderid    NUMBER PRIMARY KEY,
+     productid  NUMBER REFERENCES products(productid),
+     quantity   NUMBER NOT NULL CHECK(quantity>0),
+     customerid NUMBER REFERENCES customers(customerid)
+  ); 
+=====================================================================
+
+insert into orders1(orderid,productid,quantity,customerid) values(34,2354,1,5);
+insert into orders1(orderid,productid,quantity,customerid) values(481,894485,3,721);
+insert into orders1(orderid,productid,quantity,customerid) values(78,894485,1,236);

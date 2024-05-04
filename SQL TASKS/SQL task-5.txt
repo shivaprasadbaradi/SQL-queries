@@ -1,0 +1,133 @@
+TASK - 5
+=========
+
+TASK - 5.1
+===========
+
+create table employees
+(
+ id number primary key,
+ name char(20) not null,
+ age number not null check(age>18 AND age<60),
+ city char(15) not null,
+ salary number not null check(salary>0 AND salary<100000),
+ password varchar(20) not null,
+ department char(10) not null
+ );                                          
+===============================================================
+insert into employees (id,name,age,city,salary,password,department) values(1,'Ramesh',32,'Ahmedabad',20000.00,'ramesh123','nonIT');
+insert into employees (id,name,age,city,salary,password,department) values(2,'Khilan',25,'Delhi',15000.00,'khi369','dev');
+insert into employees (id,name,age,city,salary,password,department) values(3,'Kaushik',23,'Kota',18000.00,'kaushik456','frntend');
+insert into employees (id,name,age,city,salary,password,department) values(4,'Chaitali',25,'Mumbai',60500.00,'ch78','frntend');
+insert into employees (id,name,age,city,salary,password,department) values(5,'Hardik',27,'Bhopal',85000.00,'har45','IT');
+insert into employees (id,name,age,city,salary,password,department) values(6,'Komal',22,'MP',40000.00,'muf54','nonit');
+insert into employees (id,name,age,city,salary,password,department) values(7,'Muffy',24,'Indore',90000.00,'2345','analyst');
+insert into employees (id,name,age,city,salary,password,department) values(8,'Sanju',33,'Hyderabad',35000.00,7865,'IT');
+insert into employees (id,name,age,city,salary,password,department) values(9,'Depak',34,'Bangolore',55000.00,'dep435','backend');
+insert into employees (id,name,age,city,salary,password,department) values(10,'Vijay',29,'Chennai',33000.00,'viju453','IT');
+insert into employees (id,name,age,city,salary,password,department) values(11,'Venu',28,'Noida',10000.00,'venu789','nonIT');
+===================================================================================================================================
+Req1: modify sanju city to warangal
+
+ update employees set city='warangal' where id=8;
+
+Req2: modify depak city to karimnagar,age to 31,salary to 44000 and name T SaiDepak
+
+ update employees set city='karimnagar',age=31,salary=44000,name='T saidepak' where id=9;
+ 
+Req3: modify all employees cities to mumbai
+
+ update employees set city='Mumbai';
+ 
+Req4: vijay wants change his password to apple
+
+ update employees set password='apple' where id=10;
+
+Req5: venu wants to change his dept to it and city to delhi
+
+  update employees set department='IT', city='delhi' where id=10;
+
+Req6: give bonus of 2000 to all employees whose salary is below 45000
+  
+   update employees set salary=salary+2000 where salary<45000;
+
+commit;
+================================================================================================================================================
+TASK - 5.2
+============
+
+create table accounts
+(
+ ACCNO number(12) primary key,
+ name char(20) not null,
+ amount float(10) not null
+); 
+========================================
+
+insert into accounts (ACCNO,name,amount) values(4501,'Harish',45000);
+insert into accounts (ACCNO,name,amount) values(4502,'depak',55000);
+insert into accounts (ACCNO,name,amount) values(4503,'ram',65000);
+=============================================================================
+Req7: Depak wants to deposit 20000 into his account
+
+ update accounts Set amount=amount+20000 where ACCNO=4502;
+
+Req8: Ram wants to withdraw 5000 from his account
+
+  update accounts Set amount=amount-5000 where ACCNO=4503;
+
+Req9: Harish wants to transfer 30000 to Depak 
+
+  update accounts Set amount=amount-30000 where ACCNO=4501;
+  update accounts Set amount=amount+30000 where ACCNO=4502;
+======================================================================================
+TASK - 5.3
+===========
+
+Step1: Create table with the name buses with following columns
+	id 
+	totalSeats
+	amenities
+	busNumber
+	busOperator
+	busType	
+	boardingPoint
+	droppingPoint
+	operatorName
+
+create table buses
+(
+ id number primary key,
+ totalseats number not null check(totalseats>0 and totalseats<50),
+ amenities char(15) not null,
+ busnumber varchar(20) not null unique,
+ busoperator char(10) not null,
+ bus type char(15) not null,
+ boardingpoint varchar(20) not null,
+ droppingpoint varchar(20) not null,
+ operator name char(15)  not null
+ );
+=====================================================================================
+Step2: Add the following extra columns to the buses table
+      arrivalLocation
+	departureLocation	
+	fare
+	
+alter table buses add (arrivallocation varchar(20) not null,departurelocation varchar(20) not null,fare float(15) not null);
+=============================================================================================================================
+Step3: Drop "busType" column from the buses table
+
+alter table buses drop column bustype;
+============================================================================================
+Step4: Rename "totalSeats" column to "seatsCapacity" 
+
+alter table buses rename column totalseats to seatscapacity;
+=================================================================================================
+Step5: Modify the "operatorName" column size to 255 characters
+
+alter table buses modify operatorname char(255); 
+
+
+
+
+

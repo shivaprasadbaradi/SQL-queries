@@ -1,0 +1,80 @@
+TASK - 7.1
+===========
+
+Requirement1:Show name and age of all employees,  whose salary is below 40000
+
+select name,age from employees where salary < 40000;
+
+Requirement2:Show name,email of employees, whose salary is above 40000
+
+select name,mailid from employees where salary > 40000;
+
+Requirement3:Show all employees details whose salary is 50000 and above
+
+select * from employees where salary > 50000;
+
+Requirement4:Show all employees details whose salary is 50000 and below
+
+select * from employees where salary < 50000;
+
+Requirement5:Show all employees details whose salary is 50000
+
+select * from employees where salary = 50000;
+ 
+Requirement6:Show all employees details whose salary is other than 50000 
+
+select * from employees where salary != 50000;
+
+Requirement7:Show all employees details whose belongs to hyd city
+
+select * from employees where city = 'hyd';
+
+Requirement8:Show all employees details whose belongs to eee department
+
+select * from employees where city = 'hyd';
+
+Requirement9:Show all employees details whose belongs to pune city 
+
+select * from employees where city = 'pune';
+
+Requirement10:Show all employees details whose belongs to chennai  city
+
+select * from employees where city = 'chennai';
+
+Requirement11:Show all employees details whose belongs to cse department 
+
+select * from employees where dept = 'cse';
+
+Requirement12:Show sanjay details 
+
+select * from employees where name = 'D Sanjay';
+
+TASK - 7.2
+==========
+	
+R1:	Show all employees details whose belongs to hyd and age is below 30
+
+  select * from employees where city = 'hyd' and age < 30;
+
+R2:	Show all employees details whose salares in between 40k and 50k
+
+   select * from employees where salary > 40000 and salary < 50000;
+
+TASK - 7.3
+============
+
+Working with Regular expressions:
+=================================
+
+--show all employees whose name ending with 'ay' word
+
+ select * from employees where name like '%ay';
+
+--show all employees whose dept starting with 'e' letter
+
+ select * from employees where dept like 'e%';
+
+--show all employees whose name having 'e' letter any where
+
+ select * from employees where name like '%e%';
+

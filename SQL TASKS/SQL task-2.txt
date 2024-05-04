@@ -1,0 +1,40 @@
+TABLE - 1
+==========
+
+CREATE TABLE studenttab1
+  (
+     roll_number            NUMBER PRIMARY KEY,
+     driving_license_number VARCHAR(20) UNIQUE
+  );
+===================================================
+
+TABLE - 2
+==========
+
+CREATE TABLE studenttab2
+  (
+     roll_number        NUMBER PRIMARY KEY,
+     aadhar_card_number NUMBER(12) UNIQUE NOT NULL
+  );
+===================================================
+
+TABLE - 3.1
+===========
+
+CREATE TABLE studenttab3
+  (
+     roll_number NUMBER PRIMARY KEY,
+     name        CHAR(15) NOT NULL
+  ); 
+========================================
+ 
+TABLE - 3.2
+===========
+
+CREATE TABLE sscresults
+  (
+     hall_ticket_number NUMBER(15) PRIMARY KEY,
+     sid                NUMBER REFERENCES studenttab3(roll_number),
+     total_marks        NUMBER NOT NULL CHECK(total_marks>200 AND total_marks<
+     600)
+  ); 

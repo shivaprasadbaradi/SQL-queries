@@ -1,0 +1,102 @@
+TASK - 3.1
+==========
+
+drop table employee;
+ 
+CREATE TABLE employees
+       (
+          id      NUMBER PRIMARY KEY,
+          name    CHAR(20) NOT NULL,
+          age     NUMBER NOT NULL CHECK(age>18 AND age<60),
+          address CHAR(20) NOT NULL,
+          salary  NUMBER NOT NULL CHECK(salary>0 AND salary<20000),
+          Joined_date date not null,
+          createdDate date default sysdate,
+          modifiedDate date default sysdate
+       );
+ =============================================================
+ sequence
+==========
+
+create sequence employees_sequence start with 1 increment by 1 minvalue 0 maxvalue 100 cycle;
+
+=============================================================================================
+ 
+insert into employees (id,name,age,address,salary,Joined_date) values(employees_sequence.nextval,'Ramesh',32,'Ahmedabad',2000.00,to_date('11-3-2024','dd-mm-yyyy'));
+insert into employees (id,name,age,address,salary,Joined_date) values(employees_sequence.nextval,'Khilan',25,'Delhi',1500.00,to_date('16-3-2024','dd-mm-yyyy'));
+insert into employees (id,name,age,address,salary,Joined_date) values(employees_sequence.nextval,'Kaushik',23,'Kota',2000.00,to_date('21-3-2024','dd-mm-yyyy'));
+insert into employees (id,name,age,address,salary,Joined_date) values(employees_sequence.nextval,'Chaitali',25,'Mumbai',6500.00,to_date('01-3-2024','dd-mm-yyyy'));
+insert into employees (id,name,age,address,salary,Joined_date) values(employees_sequence.nextval,'Hardik',27,'Bhopal',8500.00,to_date('19-3-2024','dd-mm-yyyy'));
+insert into employees (id,name,age,address,salary,Joined_date) values(employees_sequence.nextval,'Komal',22,'MP',4500.00,to_date('18-3-2024','dd-mm-yyyy'));
+insert into employees (id,name,age,address,salary,Joined_date) values(employees_sequence.nextval,'Muffy',24,'Indore',10000.00,to_date('11-3-2024','dd-mm-yyyy'));
+===========================================================================================================================================================================
+
+TASK - 3.2
+==========
+
+CREATE TABLE persons
+  (
+     personid     NUMBER PRIMARY KEY,
+     lastname     CHAR(10) NOT NULL,
+     firstname    CHAR(10) NOT NULL,
+     age          NUMBER NOT NULL CHECK(age>0),
+     dateofbirth  DATE NOT NULL,
+     createdate   DATE DEFAULT SYSDATE,
+     modifieddate DATE DEFAULT SYSDATE
+  ); 
+==========================================================
+sequence
+==========
+
+create sequence persons_sequence start with 1 increment by 1 minvalue 0 maxvalue 100 cycle;
+
+==============================================================================================
+
+insert into persons(personid,lastname,firstname,age,dateofbirth) values(persons_sequence.nextval,'Hansen','Ola',30,to_date('11-3-2024','dd-mm-yyyy'));
+insert into persons(personid,lastname,firstname,age,dateofbirth) values(persons_sequence.nextval,'Svendson','Tove',23,to_date('16-3-2001','dd-mm-yyyy'));
+insert into persons(personid,lastname,firstname,age,dateofbirth) values(persons_sequence.nextval,'Pettersen','kari',20,to_date('19-3-2001','dd-mm-yyyy'));
+==========================================================================================================================================================================
+
+TABLE - 3.3
+============
+
+CREATE TABLE orders
+  (
+     orderid     NUMBER PRIMARY KEY,
+     ordernumber NUMBER NOT NULL UNIQUE,
+     personid    NUMBER REFERENCES persons(personid),
+     deliverydate date not null,
+     createdate DATE DEFAULT SYSDATE, 
+     modifieddate DATE DEFAULT SYSDATE
+  ); 
+======================================================
+sequence
+========
+create sequence orders_sequence start with 1 increment by 1 minvalue 0 maxvalue 100 cycle;
+
+
+insert into orders(orderid,ordernumber,personid,deliverydate) values(orders_sequence.nextval,77895,3,to_date('11-3-2024','dd-mm-yyyy'));
+insert into orders(orderid,ordernumber,personid,deliverydate) values(orders_sequence.nextval,44678,3,to_date('11-3-2024','dd-mm-yyyy'));
+insert into orders(orderid,ordernumber,personid,deliverydate) values(orders_sequence.nextval,22456,2,to_date('11-3-2024','dd-mm-yyyy'));
+insert into orders(orderid,ordernumber,personid,deliverydate) values(orders_sequence.nextval,24562,1,to_date('11-3-2024','dd-mm-yyyy'));
+=============================================================================================================================================
+
+TABLE - 3.4
+============
+
+CREATE TABLE offersin2024
+  (
+     id           NUMBER PRIMARY KEY,
+     name         VARCHAR(10) NOT NULL,
+     startdate    DATE NOT NULL,
+     enddate      DATE NOT NULL,
+     createdate   DATE DEFAULT SYSDATE,
+     modifieddate DATE DEFAULT SYSDATE
+  ); 
+=======================================================================
+sequence
+=========
+create sequence offers_sequence start with 1 increment by 1 minvalue 0 maxvalue 100 cycle;
+
+insert into offersin2024(id,name,startdate,enddate) values(offers_sequence.nextval,'flat500',to_date('24-2-2024','dd-mm-yyyy'),to_date('26-10-2024','dd-mm-yyyy'));
+insert into offersin2024(id,name,startdate,enddate) values(offers_sequence.nextval,'flat200',to_date('04-3-2024','dd-mm-yyyy'),to_date('22-04-2024','dd-mm-yyyy'));

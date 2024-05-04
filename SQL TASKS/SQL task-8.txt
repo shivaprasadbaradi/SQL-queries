@@ -1,0 +1,84 @@
+Task - 8.1
+==========
+
+R1: Show all employees records in ascending order based on their names
+
+ select * from employees order by name; 
+
+R2: Show all employees records in descending order based on their salaries
+
+  select * from employees order by salary desc; 
+
+R3: Show all employees records in descending order based on their ages
+
+  select * from employees order by age desc; 
+
+R4: Show all employees records in ascending order based on their userid
+
+   select * from employees order by userid; 
+
+R5: Show all employees records in ascending order based on their mailids
+
+    select * from employees order by mailid; 
+
+
+Task - 8.2
+===========
+
+R1: Show number of employees in city wise
+ 
+ select city,count(city) from employees group by city;
+
+R2: Show number of employees in dept wise
+
+  select dept,count(dept) from employees group by dept;
+
+R3: Show number of employees in gender wise
+
+  select gender,count(gender) from employees group by gender;
+
+
+R4: Show dept wise salaries sum from employees  
+
+  select dept,sum(salary) from employees group by dept;
+
+R5: Show dept wise salaries average from employees  
+
+  select dept,avg(salary) from employees group by dept;
+
+
+R6: Show highest salary from all employees 
+
+ select max(salary) from employees;
+
+R7: Show highest salary from eee dept from all employees
+
+  select dept,max(salary) from employees where dept='eee' group by dept;
+
+
+R8: Show lowest salary from all employees 
+
+  select min(salary) from employees;
+
+R9: Show lowest salary from cse dept from employees
+
+   select dept,min(salary) from employees where dept='cse' group by dept;
+
+
+	
+Task - 8.3
+==========
+
+create a view with name cseemployees from employees table with follwoing columns 
+
+	userid,mailid,salary,city and dept whose belongs to cse dept
+
+  create view cseemployees as select userid,mailid,salary,city,dept from employees where dept='cse';
+	
+Task8.4:
+
+create a view with name hydemployees from employees table with follwoing columns 
+
+	userid,mailid,salary,city and dept whose belongs to hyd city
+
+ create view hydemployees as select userid,mailid,salary,city,dept from employees where city='hyd';

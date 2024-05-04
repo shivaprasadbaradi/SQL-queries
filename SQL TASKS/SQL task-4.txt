@@ -1,0 +1,40 @@
+TASK - 4
+=========
+
+TASK - 4.1
+===========
+1.Delete all employees whose belongs to MP address
+
+     delete employees where address='MP';
+
+TASK - 4.2
+===========
+2.Delete all employees whose belongs salary is below 5000
+
+     delete employees where salary <5000.00;
+
+TASK - 4.3
+===========
+3.Delete all employees whose name is Chaitali
+
+     delete employees where name='Chaitali';
+
+TASK - 4.4
+===========
+4.Delete all 6th id row
+
+     delete employees where id=6;
+
+TASK - 4.5
+===========
+5.Delete all employees (use truncate)
+
+     truncate table employees;
+
+TASK - 4.6
+===========
+6.Delete employees table from database
+
+     drop table employees;
+=================================================================
+

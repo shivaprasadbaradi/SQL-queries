@@ -1,0 +1,90 @@
+TASK= 11:-
+=========
+Reference TABLE for sub queries:
+================================
+drop table employee;
+
+create table employee(
+id number primary key,
+name varchar(6) not null,
+salary number,
+department varchar(9),
+dob date 
+);
+
+insert into employee values(101,'Jack',2000,'HR',to_date('1997-05-19','yyyy-mm-dd'));
+insert into employee values(102,'Jack',3500,'HR',to_date('1997-05-20','yyyy-mm-dd'));
+insert into employee values(103,'Mack',6000,'Developer',to_date('1997-03-10','yyyy-mm-dd'));
+insert into employee values(104,'Peter',4000,'Tester',to_date('1998-07-16','yyyy-mm-dd'));
+insert into employee values(105,'Tom',3000,'HR',to_date('1998-11-03','yyyy-mm-dd'));
+insert into employee values(106,'Leo',2500,'Developer',to_date('1997-10-10','yyyy-mm-dd'));
+insert into employee values(107,'Roger',5300,'Accounts',to_date('1997-06-17','yyyy-mm-dd'));
+insert into employee values(108,'Mike',2000,'Developer',to_date('1998-03-09','yyyy-mm-dd'));
+insert into employee values(109,'Paul',4800,'Developer',to_date('1998-12-28','yyyy-mm-dd'));
+insert into employee values(110,'Hannah',2000,'Accounts',to_date('1999-09-26','yyyy-mm-dd'));
+
+commit;
+
+select * from employee;
+
+---------------------------------------------------------------------------------------------
+Show the employee name whose getting highest salary?
+Ex1:
+	select name from employee where	salary	= (select max(salary) from employee);
+-----------------------------------------------------------------------------------------------
+
+Req2(Task11.1):	Show the employee name whose getting lowest salary?
+select name from employee where	salary	= (select min(salary) from employee);
+-----------------------------------------------------------------------------
+
+Requirement3:	Show the 2nd highest salary
+=============
+
+Step1- 1st highest salary
+
+	Q1 ->  select max(salary) from employee   = R1 - 6000
+
+Step2- 
+	Q2 -> select max(salary) from employee where salary != (Q1) ;
+Ex2:
+====	select max(salary) from employee where salary != ( select max(salary) from employee);
+-----------------------------------------------------------------------------------------------------
+
+Requirement4(Task11.2):	Show the 2nd lowset salary?
+======================
+
+step1- 1st lowest salary
+
+	Q1 ->  select min(salary) from employee   = R1 - 6000
+
+Step2- 
+	Q2 -> select min(salary) from employee where salary != (Q1) ;
+
+ans:-
+select min(salary) from employee where salary != ( select min(salary) from employee);
+---------------------------------------------------------------------------------------------
+
+Requirement5:   Show the employee name whose getting 2nd highest salary
+============
+Ex3:
+	select name from employee where salary = 
+	(
+		select max(salary) from employee where salary != 
+		( 
+			select max(salary) from employee	
+		)
+	);
+------------------------------------------------------------------------------------------------
+
+Requirement6(Task11.2):   Show the employee name whose getting 2nd lowest salary
+=======================
+
+
+	select name from employee where salary = 
+	(
+		select min(salary) from employee where salary != 
+		( 
+			select min(salary) from employee	
+		)
+	);
+
